@@ -1,10 +1,30 @@
-
 # Number, String, Tuple, Frozenset
 # Dictionary, Set, List
 # boolen: False == 0, True == 1, type(False/True):bool
 
+# print strings without ¥r¥n
 print('This file is used for testing .py', end='')
 print()
+
+# use globle value
+GLOBAL_VALUE = 'globle value'
+
+
+def print_global_value():
+    print(GLOBAL_VALUE, type(GLOBAL_VALUE))
+
+
+def change_print_global_value():
+    global GLOBAL_VALUE
+    GLOBAL_VALUE += ' is Changed.'
+    print(GLOBAL_VALUE, type(GLOBAL_VALUE))
+
+
+print_global_value()
+change_print_global_value()
+print_global_value()
+
+# multiple arguments
 
 
 def type_all(arg, *tupleArgs, **dictArgs):
@@ -40,6 +60,8 @@ args1 = (1, 3, 54, 23)
 args2 = {'a': 3, 'b': 5}
 fun_args(2, *args1, **args2)
 
+# base function programming test
+
 
 def lazy_add(a):
     def arg(b):
@@ -49,3 +71,13 @@ def lazy_add(a):
 
 add1 = lazy_add(1)
 print(add1(10), add1(100))
+
+
+def lazy_print(*str):
+    return lambda x: str[x % len(str)]
+
+
+print1 = lazy_print(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
+print(print1(0))  # 1
+print(print1(3))  # 4
+print(print1(14))  # 5
