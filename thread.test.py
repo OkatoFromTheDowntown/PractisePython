@@ -24,7 +24,7 @@ GLOBAL_VALUE = 1
 # while 1:
 #   pass
 
-threadLock = threading.Lock()
+threadLock = threading.RLock()
 
 
 def print_time(threadName, delay, counter):
@@ -40,7 +40,9 @@ def print_time(threadName, delay, counter):
 
 class ThreadTask(threading.Thread):
     def __init__(self, threadID, name, counter):
-        threading.Thread.__init__(self)
+        # threading.Thread.__init__(self)
+        # super(ThreadTask, self).__init__()
+        super().__init__()
         self.threadID, self.name, self.counter = threadID, name, counter
 
     def run(self):
