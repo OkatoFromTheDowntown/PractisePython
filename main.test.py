@@ -24,9 +24,20 @@ print_global_value()
 change_print_global_value()
 print_global_value()
 
+
+def update_list(x):
+    # x = [3,4,5,6]
+    x += [3, 4, 5, 6, 7]
+    return x
+
+
+x = [1, 2]
+print(x)  # [1,2]
+print(update_list(x))  # [3,4,5,6]
+print(x)  # [1,2]
+
+
 # multiple arguments
-
-
 def type_all(arg, *tupleArgs, **dictArgs):
     print(arg, type(arg))
     print(tupleArgs, [type(x) for x in tupleArgs])
@@ -38,7 +49,7 @@ d, e, f = 'DE', 3.14, False
 print(a, b, c, d, e, f)
 type_all(set({}), a, b, c, d, e, f, x=1, y=3)
 
-print([x**2 for x in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] if x % 2 == 0])
+print(sum(x**2 for x in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] if x % 2 == 0))
 print([type(x) for x in (1, 2, False, 4, '5', 6.2)])
 
 print(dict([('a', 1), ('b', 2), ('c', 3)]))
