@@ -3,7 +3,7 @@ import xlwt  # doesn't work on .xlsx
 import xlutils  # doesn't work on .xlsx
 
 # open .xlsx
-book = xlrd.open_workbook(r'target.xlsx')
+book = xlrd.open_workbook(r'copytarget.xlsx')
 print('The number of sheets: %d' % book.nsheets)
 print('The name of sheets: %s' % book.sheet_names())
 
