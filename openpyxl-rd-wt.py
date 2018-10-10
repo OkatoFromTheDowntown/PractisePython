@@ -19,5 +19,7 @@ wb.save(dest_filename)
 cpwb = openpyxl.load_workbook(dest_filename)
 sheet = cpwb.get_sheet_by_name('create_sheet')
 sheet.title = 'copyright_sheet'
+cp_sheet = cpwb.copy_worksheet(sheet)
+cp_sheet.title = 'this_is_a_copy_sheet'
 
 cpwb.save('copy' + dest_filename)
