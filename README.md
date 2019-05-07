@@ -1,4 +1,4 @@
-# PractisePythonWithExcel
+# PractisePython
 
 
 **Quick start (xlrd)**:
