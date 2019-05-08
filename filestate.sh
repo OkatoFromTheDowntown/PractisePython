@@ -15,9 +15,9 @@ declare -A opStorage;
 while read line;
 do
   ftype=`file -b "$line" | cut -d, -f1`;
-  let opStorage["$ftype"]++;
-done < `find $path -type f -print`
-echo ${!opStorage[*]}
+  ((opStorage["$ftype"]++))
+done < <(find $path -type f -print)
+
 echo ============= File types and counts ============= 
 echo $i
 for ftype in "${!opStorage[@]}";
