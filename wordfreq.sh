@@ -8,8 +8,10 @@ else
   echo "Invalid file name"
 fi  
 
-grep -oE "\b[a-zA-Z]+\b" "$filename" | \
+grep -oE "\b['a-zA-Z]+\b" "$filename" | \
+  tr [A-Z] [a-z] | \
   awk ' { count[$0]++ }
     END { printf("%-14s %s\n", "Word", "Count") ;
       for ( i in count )
-        { printf("%-14s %s\n", i, count[i]); } } '
+        { printf("%-14s %s\n", i, count[i]); } } ' | \
+  sort
