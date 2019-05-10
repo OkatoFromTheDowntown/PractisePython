@@ -12,22 +12,19 @@ do
   esac
 done
 
-mkdir -p $directory;
-baseurl=$(echo $url | grep -oE "https?://[a-z.\-]+")
+mkdir -p "$directory"/download;
+baseurl=$(echo "$url" | grep -oE "https?://[a-z.\-]+")
 
-echo Downloading $url
-curl -s $url | grep -oE "<img[^>]*src=[^>]*>" | \
+echo Downloading "$url"
+curl -s "$url" | grep -oE "<img[^>]*src=[^>]*>" | \
   sed 's/<img[^>]*src=\"\{0,1\}\([^> "]*\).*/\1/g' | \
-  sed "s|^//||" > /tmp/$$.download.list.bak 
+  sed -e "s|^//||" -e "s|^/|$baseurl|" > "$directory"/download/$$.download.list.bak 
 
-mkdir $directory/download/
-cd $directory/download/
+cd "$directory"/download/
 
 while read filename
 do
-  echo Downloading $filename
+  echo Downloading "$filename"
   curl -s -O "$filename"
-done < /tmp/$$.download.list.bak
-
-rm /tmp/$$.download.list.bak
+done < ./$$.download.list.bak
 
